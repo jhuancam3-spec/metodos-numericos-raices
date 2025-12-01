@@ -136,6 +136,7 @@ cat > index.html << 'EOF'
         .excel-icon { color: #27ae60; }
         .python-icon { color: #306998; }
         .html-icon { color: #3498db; }
+        .image-icon { color: #9b59b6; }
         
         .file-name {
             font-weight: bold;
@@ -187,6 +188,18 @@ cat > index.html << 'EOF'
         .btn-calculator:hover {
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4);
+        }
+        .image-preview {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid #eee;
+            transition: transform 0.3s ease;
+        }
+        .file-card:hover .image-preview {
+            transform: scale(1.05);
         }
         footer {
             text-align: center;
@@ -288,11 +301,23 @@ cat > index.html << 'EOF'
             <div class="section section-python">
                 <div class="section-title">
                     <i class="fab fa-python" style="color: #306998;"></i>
-                    <h2>🐍 Código Python</h2>
+                    <h2>🐍 Código Python + Gráficas</h2>
                 </div>
-                <p>Implementación de métodos numéricos en Python. Código ejecutable y modular.</p>
+                <p>Implementación de métodos numéricos en Python y gráficas generadas.</p>
                 
                 <div class="file-grid">
+                    <!-- IMAGEN DE GRÁFICAS -->
+                    <a href="CodigoPython/GRAFICAS_4_ECUACIONES.png" class="file-card" target="_blank">
+                        <div class="file-icon image-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <img src="CodigoPython/GRAFICAS_4_ECUACIONES.png" alt="Gráficas de Ecuaciones" class="image-preview">
+                        <div class="file-name">GRAFICAS_4_ECUACIONES.png</div>
+                        <div class="file-desc">Gráficas de las 4 ecuaciones analizadas en el proyecto</div>
+                        <div class="btn-open">Ver Gráfica</div>
+                    </a>
+                    
+                    <!-- CÓDIGOS PYTHON -->
                     <a href="CodigoPython/metodos_numericos.py" class="file-card" target="_blank">
                         <div class="file-icon python-icon">
                             <i class="fas fa-file-code"></i>
