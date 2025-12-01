@@ -1,349 +1,118 @@
+cat > index.html << 'EOF'
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Métodos Numéricos - Material Completo</title>
+    <title>Métodos Numéricos - Calculadora de Raíces</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-            border-left: 5px solid #3498db;
-            border-right: 5px solid #3498db;
-        }
-        
-        h1 {
-            color: #2c3e50;
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #3498db, #2c3e50);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .subtitle {
-            color: #7f8c8d;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border-top: 4px solid;
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .card-python {
-            border-top-color: #306998;
-        }
-        
-        .card-docs {
-            border-top-color: #e74c3c;
-        }
-        
-        .card-excel {
-            border-top-color: #27ae60;
-        }
-        
-        .card-web {
-            border-top-color: #3498db;
-        }
-        
-        .card-header {
-            padding: 25px 20px 15px;
-            text-align: center;
-        }
-        
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-        
-        .icon-python {
-            color: #306998;
-        }
-        
-        .icon-docs {
-            color: #e74c3c;
-        }
-        
-        .icon-excel {
-            color: #27ae60;
-        }
-        
-        .icon-web {
-            color: #3498db;
-        }
-        
-        .card-title {
-            font-size: 1.5rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        
-        .card-body {
-            padding: 0 20px 20px;
-        }
-        
-        .card-description {
-            color: #7f8c8d;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            text-align: center;
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background: #2980b9;
-            transform: scale(1.05);
-        }
-        
-        .btn-python {
-            background: #306998;
-        }
-        
-        .btn-python:hover {
-            background: #25567a;
-        }
-        
-        .btn-docs {
-            background: #e74c3c;
-        }
-        
-        .btn-docs:hover {
-            background: #c0392b;
-        }
-        
-        .btn-excel {
-            background: #27ae60;
-        }
-        
-        .btn-excel:hover {
-            background: #219653;
-        }
-        
-        .btn-web {
-            background: #3498db;
-        }
-        
-        .btn-web:hover {
-            background: #2980b9;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 40px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-        
-        .github-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 25px;
-            background: #333;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .github-link:hover {
-            background: #444;
-            transform: scale(1.05);
-        }
-        
-        .last-updated {
-            margin-top: 20px;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 40px 20px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 40px; }
+        h1 { color: #2c3e50; font-size: 2.8rem; margin-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: all 0.3s ease; border-top: 4px solid; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .card-header { padding: 25px 20px 15px; text-align: center; }
+        .card-icon { font-size: 3rem; margin-bottom: 15px; }
+        .card-body { padding: 0 20px 20px; }
+        .btn { display: block; width: 100%; padding: 12px; text-align: center; background: #3498db; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; }
+        .btn:hover { background: #2980b9; transform: scale(1.05); }
+        footer { text-align: center; padding: 30px; margin-top: 40px; background: white; border-radius: 15px; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-calculator"></i> Métodos Numéricos</h1>
-            <p class="subtitle">Repositorio completo del curso - Material para estudiantes</p>
-            <p>Todos los recursos organizados para fácil acceso</p>
+            <h1><i class="fas fa-calculator"></i> Calculadora de Raíces</h1>
+            <p class="subtitle">Métodos Numéricos - Material Completo del Curso</p>
+            <p>👩‍🎓 Estudiante: Huanca Mamani Jaquelin Aracely | C.I.: 9975218</p>
         </header>
         
         <div class="grid">
-            <!-- Código Python -->
-            <div class="card card-python">
+            <div class="card" style="border-top-color: #3498db;">
                 <div class="card-header">
-                    <div class="card-icon icon-python">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3 class="card-title">Código Python</h3>
+                    <div class="card-icon" style="color: #3498db;"><i class="fas fa-globe"></i></div>
+                    <h3 class="card-title">🧮 Calculadora Web</h3>
                 </div>
                 <div class="card-body">
-                    <p class="card-description">Implementaciones de métodos numéricos en Python</p>
-                    <a href="CodigoPython/" class="btn btn-python">
-                        <i class="fas fa-folder-open"></i> Acceder a Códigos
+                    <p class="card-description">Calculadora interactiva de métodos numéricos</p>
+                    <a href="PaginaWeb/index.html" class="btn" style="background: #3498db;">
+                        <i class="fas fa-external-link-alt"></i> Abrir Calculadora
                     </a>
                 </div>
             </div>
             
-            <!-- Documentación -->
-            <div class="card card-docs">
+            <div class="card" style="border-top-color: #e74c3c;">
                 <div class="card-header">
-                    <div class="card-icon icon-docs">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h3 class="card-title">Documentación</h3>
+                    <div class="card-icon" style="color: #e74c3c;"><i class="fas fa-file-alt"></i></div>
+                    <h3 class="card-title">📄 Documentación</h3>
                 </div>
                 <div class="card-body">
-                    <p class="card-description">Apuntes, guías y material teórico del curso</p>
-                    <a href="Documentacion/" class="btn btn-docs">
-                        <i class="fas fa-book-open"></i> Ver Documentos
+                    <p class="card-description">Informe completo y material teórico</p>
+                    <a href="Documentacion/" class="btn" style="background: #e74c3c;">
+                        <i class="fas fa-folder-open"></i> Ver Documentos
                     </a>
                 </div>
             </div>
             
-            <!-- Archivos Excel -->
-            <div class="card card-excel">
+            <div class="card" style="border-top-color: #27ae60;">
                 <div class="card-header">
-                    <div class="card-icon icon-excel">
-                        <i class="fas fa-file-excel"></i>
-                    </div>
-                    <h3 class="card-title">Archivos Excel</h3>
+                    <div class="card-icon" style="color: #27ae60;"><i class="fas fa-file-excel"></i></div>
+                    <h3 class="card-title">📊 Archivos Excel</h3>
                 </div>
                 <div class="card-body">
-                    <p class="card-description">Hojas de cálculo con cálculos y ejemplos</p>
-                    <a href="Excel/" class="btn btn-excel">
+                    <p class="card-description">Cálculos y análisis en hojas de cálculo</p>
+                    <a href="Excel/" class="btn" style="background: #27ae60;">
                         <i class="fas fa-table"></i> Abrir Excel
                     </a>
                 </div>
             </div>
             
-            <!-- Página Web -->
-            <div class="card card-web">
+            <div class="card" style="border-top-color: #306998;">
                 <div class="card-header">
-                    <div class="card-icon icon-web">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3 class="card-title">Página Web</h3>
+                    <div class="card-icon" style="color: #306998;"><i class="fab fa-python"></i></div>
+                    <h3 class="card-title">🐍 Código Python</h3>
                 </div>
                 <div class="card-body">
-                    <p class="card-description">Interfaz web interactiva de métodos numéricos</p>
-                    <a href="PaginaWeb/index.html" class="btn btn-web">
-                        <i class="fas fa-external-link-alt"></i> Ver Página Web
+                    <p class="card-description">Implementación en Python de los métodos</p>
+                    <a href="CodigoPython/" class="btn" style="background: #306998;">
+                        <i class="fas fa-code"></i> Ver Códigos
                     </a>
                 </div>
             </div>
         </div>
         
         <footer>
-            <h3>¿Necesitas el repositorio completo?</h3>
-            <p>Accede a todos los archivos directamente en GitHub:</p>
-            <a href="https://github.com/jhuancam3-spec/metodos-numericos-raices" class="github-link" target="_blank">
-                <i class="fab fa-github"></i> Ver Repositorio en GitHub
-            </a>
-            <div class="last-updated">
-                <p><i class="fas fa-sync-alt"></i> Actualizado automáticamente</p>
-                <p id="current-date"></p>
-            </div>
+            <h3>📁 Acceso Directo a Carpetas</h3>
+            <p>
+                <a href="PaginaWeb/" style="margin: 0 10px;">📂 PaginaWeb</a> | 
+                <a href="Documentacion/" style="margin: 0 10px;">📂 Documentacion</a> | 
+                <a href="Excel/" style="margin: 0 10px;">📂 Excel</a> | 
+                <a href="CodigoPython/" style="margin: 0 10px;">📂 CodigoPython</a>
+            </p>
+            <p style="margin-top: 20px;">
+                <a href="https://github.com/jhuancam3-spec/calculadora-raices-metodos-numericos" class="github-link" 
+                   style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 25px; background: #333; color: white; text-decoration: none; border-radius: 8px;">
+                    <i class="fab fa-github"></i> Ver Repositorio en GitHub
+                </a>
+            </p>
+            <p style="margin-top: 20px; color: #7f8c8d;">
+                <i class="fas fa-sync-alt"></i> Actualizado: <span id="current-date"></span>
+            </p>
         </footer>
     </div>
     
     <script>
-        // Actualizar fecha
-        const options = { 
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('es-ES', {
             weekday: 'long', 
             year: 'numeric', 
             month: 'long', 
             day: 'numeric',
             hour: '2-digit',
             minute: '2-digit'
-        };
-        document.getElementById('current-date').textContent = 
-            new Date().toLocaleDateString('es-ES', options);
-        
-        // Efecto de carga de tarjetas
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                
-                setTimeout(() => {
-                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 200);
-            });
         });
     </script>
 </body>
